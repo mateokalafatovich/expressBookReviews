@@ -10,7 +10,7 @@ public_users.post("/register", (req,res) => {
 
     // Check if both username and password are provided
     if (!username || !password) {
-        return res.status(404).json({message: 'Unable to register uesr.'});
+        return res.status(404).json({message: 'Unable to register user.'});
     }
 
     const userExists = users.some((user) => user.username === username);
@@ -19,7 +19,7 @@ public_users.post("/register", (req,res) => {
         return res.status(404).json({message: 'User already exists'});
     } else {
         users.push({'username': username, 'password': password});
-        return res.status(200).json({message: 'User successfully registerd.'});
+        return res.status(200).json({message: 'User successfully registered.'});
     }
     
 });
