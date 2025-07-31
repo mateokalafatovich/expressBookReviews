@@ -12,6 +12,10 @@ app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUni
 
 app.use("/customer/auth/*", function auth(req,res,next){
     // Check if user is logged in and has valid access token
+    console.log("Middleware - Request URL:", req.url); // Debug
+    console.log("Middleware - Cookies:", req.headers.cookie); // Debug
+    console.log("Middleware - Session:", req.session.authorization); // Debug
+    
     if (req.session.authorization) {
         let token = req.session.authorization['accessToken'];
         // Verify JWT token
