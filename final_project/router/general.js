@@ -13,9 +13,7 @@ public_users.post("/register", (req,res) => {
         return res.status(404).json({message: 'Unable to register user.'});
     }
 
-    const userExists = users.some((user) => user.username === username);
-
-    if (userExists) {
+    if (isValid(username)) {
         return res.status(404).json({message: 'User already exists'});
     } else {
         users.push({'username': username, 'password': password});
